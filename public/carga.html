@@ -17,44 +17,45 @@
             <ul class="me-4 hover:underline md:me-6">Carga</ul>
         </li>
     </header>
+
     <h1 class="ml-5 mt-5">Carga de items</h1>
-    <form action="" class="m-5 flex flex-col p-2 rounded">
-        <label for="">Seleccione qué cargará</label>
-        <select name="select" id="select" class="rounded m-2 border border-solid">
-            <option value="item">
+    <form action="../php/carga_datos.php" method="post" enctype="multipart/form-data" class="m-5 flex flex-col p-2 rounded">
+        <label for="selector">Seleccione qué cargará</label>
+        <select name="select" id="selector" class="rounded m-2 border border-solid">
+            <option value="opcion1">
                 Item
             </option>
-            <option value="autoridad">
+            <option value="opcion2">
                 Autoridad
             </option>
         </select>
         <hr>
         <div class="bg-gris flex flex-col p-2 rounded mb-2 mt-2">
             <label for="titulo">Título:</label>
-            <input type="text" class="border border-solid rounded">
+            <input type="text" id="titulo" name="titulo" class="border border-solid rounded">
             <label for="">Edición:</label>
-            <input type="text" class="border border-solid rounded">
+            <input type="text" id="edicion" name="edicion" class="border border-solid rounded">
             <label for="">Material:</label>
-            <input type="text" class="border border-solid rounded">
+            <input type="text" id="material" name="material" class="border border-solid rounded">
             <label for="">Publicación:</label>
-            <input type="text" class="border border-solid rounded">
+            <input type="text" id="publicacion" name="publicacion" class="border border-solid rounded">
             <label for="">Descripción física:</label>
-            <input type="text" class="border border-solid rounded">
+            <input type="text" id="descripcion" name="descripcion" class="border border-solid rounded">
             <label for="">Serie:</label>
-            <input type="text" class="border border-solid rounded">
+            <input type="text" id="serie" name="serie" class="border border-solid rounded">
             <label for="">Notas:</label>
-            <input type="text" class="border border-solid rounded">
+            <input type="text" id="notas" name="notas" class="border border-solid rounded">
             <label for="">Número normalizado:</label>
-            <input type="text" class="border border-solid rounded">
+            <input type="text" id="normalizado" name="normalizado" class="border border-solid rounded">
             <label for="">Portada:</label>
-            <input type="file" name="" id="">
+            <input type="file" name="portada" id="portada">
         </div>
         
         <div class="bg-gris flex flex-col p-2 rounded mt-2 mb-2">
             <label for="">Signatura topográfica:</label>
-            <input type="text" class="border border-solid rounded">
+            <input type="text" id="signatura" name="signatura" class="border border-solid rounded">
             <label for="">Disponibilidad:</label>
-            <input type="text" class="border border-solid rounded">
+            <input type="text" id="disponibilidad" name="disponibilidad" class="border border-solid rounded">
         </div>
         <button type="submit" class="bg-azul border border-solid rounded p-2 m-1 text-blanco cursor-pointer">Enviar</button>
         <button type="reset" class="bg-rojo border border-solid rounded p-2 m-1 text-blanco cursor-pointer">Reset</button>
@@ -63,6 +64,8 @@
     <footer>
 
     </footer>
+
+    <script src="./js/formulario.js"></script>
 </body>
 
 </html>
