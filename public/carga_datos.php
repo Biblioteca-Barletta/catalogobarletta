@@ -25,6 +25,7 @@ $portada = $_POST['portada'];
 $signatura = $_POST['signatura'];
 $disponibilidad = $_POST['disponibilidad'];
 
+
 // Preparar la consulta SQL
 $sql = "INSERT INTO items (titulo, edicion, material, publi_distribucion, descripcion_fisica, serie, notas, numero_normalizado, portada, signatura, disponibilidad) VALUES ('$titulo', '$edicion', '$material','$publicacion','$descripcion','$serie','$notas','$normalizado','$portada','$signatura','$disponibilidad')";
 

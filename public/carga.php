@@ -1,3 +1,4 @@
+header('Content-Type: text/html; charset=utf-8');
 <!DOCTYPE html>
 <html lang="en">
 
@@ -99,7 +100,7 @@
             class="bg-rojo border border-solid rounded p-2 m-1 text-blanco cursor-pointer">Reset</button>
     </form>
     <!-- Footer: legales, etc. -->
-    <footer>
+    <footer class="border-t-3">
 
     </footer>
 </body>
