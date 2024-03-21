@@ -25,12 +25,25 @@
     </section>
     <!-- Section 2: contiene las novedades con cardbox -->
     <section>
+    <?php
+include 'php/conexion.php'; // Incluye el archivo de conexión
+
+// Realiza la consulta SQL
+$sql = "SELECT * FROM items";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Imprime los datos dentro de la card
+    while($row = $result->fetch_assoc()) {
+?>
+
+
         <h1 class="font-bold m-4">
             Novedades
         </h1>
         <div class="flex flex-wrap justify-center">
             <div class="card m-4 w-fit p-5 text-center border rounded border-gray-50 bg-gris flex flex-col">
-                <h2 class="card-title mt-1 text-2xl">Título de la Card</h2>
+                <h2 class="card-title mt-1 text-2xl"><?php echo $row["titulo"]; ?></h2>
                 <img src="./img/portadas/portada.jpg" alt="Imagen de la Card" class="card-image h-52 m-4 rounded">
                 <button class="card-button bg-azul border border-solid rounded p-2 m-1 text-blanco cursor-pointer"
                     onclick="openModal()">Ver más...</button>
@@ -79,18 +92,18 @@
                     <div>
                         <h2 class="card-title mt-1 text-2xl">Título de la Card</h2>
                         <ol>
-                            <ul>Edición:</ul>
-                            <ul>Material:</ul>
-                            <ul>Publicación:</ul>
-                            <ul>Descripción física:</ul>
-                            <ul>Serie:</ul>
-                            <ul>Notas:</ul>
-                            <ul>Número normalizado:</ul>
+                            <ul>Edición: <?php echo $row["edicion"]; ?></ul>
+                            <ul>Material: <?php echo $row["material"]; ?></ul>
+                            <ul>Publicación: <?php echo $row["publi_distribucion"]; ?></ul>
+                            <ul>Descripción física: <?php echo $row["descripcion_fisica"]; ?></ul>
+                            <ul>Serie: <?php echo $row["serie"]; ?></ul>
+                            <ul>Notas: <?php echo $row["notas"]; ?></ul>
+                            <ul>Número normalizado: <?php echo $row["numero_normalizado"]; ?></ul>
                         </ol>
                         <hr class="m-2">
                         <ol>
-                            <ul>Disponibilidad:</ul>
-                            <ul>Signatura topográfica:</ul>
+                            <ul>Disponibilidad: <?php echo $row["disponibilidad"]; ?></ul>
+                            <ul>Signatura topográfica: <?php echo $row["signatura"]; ?></ul>
                         </ol>
                     </div>
                     <img src="./img/portadas/portada.jpg" alt="Imagen de la Card" class="modal-image h-52 m-4 rounded">
@@ -107,6 +120,14 @@
             </div>
         </div>
     </section>
+<?php
+
+}
+} else {
+    echo "0 resultados";
+}
+$conn->close();
+?>
     <!-- Footer: legales, etc. -->
     <footer>
 
