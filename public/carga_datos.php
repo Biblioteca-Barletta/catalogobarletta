@@ -1,9 +1,5 @@
 <?php
-// Conexión a la base de datos
-$servername = "localhost";
-$username = "c2030171_opac";
-$password = "su87TEmavu";
-$database = "c2030171_opac";
+include 'conexion.php'; // Incluye el archivo de conexión
 
 $conn = new mysqli($servername, $username, $password, $database);
 
@@ -31,7 +27,9 @@ $sql = "INSERT INTO items (titulo, edicion, material, publi_distribucion, descri
 
 // Ejecutar la consulta
 if ($conn->query($sql) === TRUE) {
-    echo "Registro insertado exitosamente";
+    // Redireccionar a carga.php si la consulta se ejecuta con éxito
+    header("Location: ../carga.php");
+    exit(); // Asegura que el script se detenga después de la redirección
 } else {
     echo "Error al insertar registro: " . $conn->error;
 }

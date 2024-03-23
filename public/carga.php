@@ -21,7 +21,7 @@
     <h1 class="ml-5 mt-5">Carga de items</h1>
     <form action='carga_datos.php' method="post" enctype="multipart/form-data" class="m-5 flex flex-col p-2 rounded">
         <label for="selector">Seleccione qué cargará</label>
-        <select name="select" id="selector" class="rounded m-2 border border-solid">
+        <select name="select" id="selector" class="rounded m-2 p-1 border border-solid">
             <option value="opcion1">
                 Item
             </option>
@@ -98,6 +98,8 @@
     <footer class="border-t-3">
 
     </footer>
+
+    <script src="./js/cambio_form.js"></script>
 </body>
 
 </html>
