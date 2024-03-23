@@ -37,7 +37,7 @@
 </h1>
 <div class="flex flex-wrap justify-center">
     <?php
-       include '../php/conexion.php'; // Incluye el archivo de conexión
+       include 'conexion.php'; // Incluye el archivo de conexión
 
 // Verificar conexión
 if ($conn->connect_error) {
