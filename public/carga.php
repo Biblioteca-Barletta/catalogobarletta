@@ -1,4 +1,3 @@
-header('Content-Type: text/html; charset=utf-8');
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +19,7 @@ header('Content-Type: text/html; charset=utf-8');
     </header>
 
     <h1 class="ml-5 mt-5">Carga de items</h1>
-    <form action="./carga_datos.php" method="post" enctype="multipart/form-data" class="m-5 flex flex-col p-2 rounded">
+    <form action="../php/carga_datos.php" method="post" enctype="multipart/form-data" class="m-5 flex flex-col p-2 rounded">
         <label for="selector">Seleccione qué cargará</label>
         <select name="select" id="selector" class="rounded m-2 border border-solid">
             <option value="opcion1">
@@ -38,11 +37,7 @@ header('Content-Type: text/html; charset=utf-8');
             <label for="autor">Autor:</label>
             <select id="autor" name="autor" class="border border-solid rounded">
                 <?php
-                // // Conexión a la base de datos
-                $servername = "localhost";
-                $username = "c2030171_opac";
-                $password = "su87TEmavu";
-                $dbname = "c2030171_opac";
+                include '../php/conexion.php'; // Incluye el archivo de conexión
     
                 $conn = new mysqli($servername, $username, $password, $dbname);
     

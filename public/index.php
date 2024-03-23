@@ -45,7 +45,7 @@ if ($conn->connect_error) {
 }
 
     // Realiza la consulta SQL
-    $sql = "SELECT * FROM items ORDER BY id DESC LIMIT 5";
+    $sql = "SELECT * FROM items ORDER BY id_items DESC LIMIT 5";
     $result = $conn->query($sql);
 
 if (!$result) {
