@@ -105,8 +105,8 @@ if (!$result) {
 
 
     <!-- Footer: legales, etc. -->
-    <footer>
-
+    <footer class= "border-t-0 border-l-0 border-r-0 border-b-4 border-b-azul h-20 flex border border-solid">
+    <h6>©Biblioteca Popular Sanlorencista "Leónidas Barletta"</h6>
     </footer>
 
     <script src="./js/script.js"></script>

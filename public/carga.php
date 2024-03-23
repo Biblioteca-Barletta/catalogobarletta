@@ -95,8 +95,8 @@
             class="bg-rojo border border-solid rounded p-2 m-1 text-blanco cursor-pointer">Reset</button>
     </form>
     <!-- Footer: legales, etc. -->
-    <footer class="border-t-3">
-
+    <footer class="border-t-0 border-l-0 border-r-0 border-b-4 border-b-azul h-20 flex border border-solid">
+    <h6>©Biblioteca Popular Sanlorencista "Leónidas Barletta"</h6>
     </footer>
 
     <script src="./js/cambio_form.js"></script>
