@@ -64,7 +64,7 @@ if (!$result) {
                 <h2 class="card-title mt-1 text-2xl text-wrap"><?php echo $row["titulo"]; ?></h2>
                 <h4 class="card-title text-wrap"><?php echo $row["otra_info"]; ?></h4>
                 <img src="./img/portadas/portada.png" alt="Imagen de la Card" class="card-image m-4 w-fit h-auto rounded">
-                <button class="card-button bg-azul border border-solid rounded p-2 m-1 text-blanco cursor-pointer" onclick="openModal('<?php echo $row["titulo"]; ?>')">Ver más...</button>
+                <button class="card-button bg-azul border border-solid rounded p-2 m-1 text-blanco cursor-pointer" onclick="openModal('<?php echo $row["titulo"]; ?>', '<?php echo $row["otra_info"]; ?>')">Ver más...</button>
 
                 <!-- Modal -->
                 <div id="modal" class="modal hidden fixed z-20 left-0 top-0 w-full h-full overflow-auto bg-blanco">
@@ -73,7 +73,7 @@ if (!$result) {
                         <div class="flex justify-between">
                             <div>
                                 <h2 class="card-title m-2 text-2xl"><?php echo $row["titulo"]; ?></h2>
-                                <h4 class="card-title text-wrap"><?php echo $row["otra_info"]; ?></h4>
+                                <h4 class="modal-otra-info text-wrap"><?php echo $row["otra_info"]; ?></h4>
                                 <ol class="text-left">
                                     <li>Edición: <?php echo $row["edicion"]; ?></li>
                                     <li>Material: <?php echo $row["material"]; ?></li>
