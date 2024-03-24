@@ -18,6 +18,8 @@
         </li>
     </header>
 
+
+<section class="border border-solid border-b-4 border-l-0 border-r-0 border-b-azul">
     <h1 class="ml-5 mt-5">Carga de autoridades</h1>
     <form action='carga_datos_autoridad.php' method="post" enctype="multipart/form-data" class="m-5 flex flex-col p-2 rounded">
         <label for="selector">Seleccione qué cargará</label>
@@ -25,7 +27,7 @@
             <option value="opcion1">
                 Item
             </option>
-            <option value="opcion2">
+            <option value="opcion2" selected>
                 Autoridad
             </option>
         </select>
@@ -42,9 +44,14 @@
         <button type="reset"
             class="bg-rojo border border-solid rounded p-2 m-1 text-blanco cursor-pointer">Reset</button>
     </form>
+</section>
     <!-- Footer: legales, etc. -->
-    <footer class="border-t-0 border-l-0 border-r-0 border-b-4 border-b-azul h-20 flex border border-solid">
-    <h6>©Biblioteca Popular Sanlorencista "Leónidas Barletta"</h6>
+    <footer class= "flex flex-wrap items-left justify-left bg-gris border-t-0 border-l-0 border-r-0 border-b-4 border-b-rojo h-20">
+        <div class="m-4">
+            <h6>©Biblioteca Popular Sanlorencista "Leónidas Barletta"</h6>
+            <h6>Desarrollado por <a href="" class="font-bold">BrunoDev</a></h6>
+        </div>
+    
     </footer>
 
     <script src="./js/cambio_form.js"></script>

@@ -28,14 +28,11 @@
     </section>
 
     <!-- Section 2: contiene las novedades con cardbox -->
-    <section>
-    
-
-
+    <section class="border border-solid border-b-4 border-l-0 border-r-0 border-b-azul grid grid-cols-5">
         <h1 class="font-bold m-4">
     Novedades
 </h1>
-<div class="flex flex-wrap justify-center">
+<div class="grid grid-cols-5 grid-rows-1">
     <?php
        include 'conexion.php'; // Incluye el archivo de conexión
 
@@ -56,9 +53,9 @@ if (!$result) {
         // Imprime los datos dentro de la card
         while ($row = $result->fetch_assoc()) {
     ?>
-            <div class="card m-4 w-fit p-5 text-center border rounded border-gray-50 bg-gris flex flex-col">
-                <h2 class="card-title mt-1 text-2xl"><?php echo $row["titulo"]; ?></h2>
-                <img src="./img/portadas/portada.jpg" alt="Imagen de la Card" class="card-image h-52 m-4 rounded">
+            <div class="card flex flex-col items-center justify-between m-4 p-4 text-center border rounded bg-gris">
+                <h2 class="card-title mt-1 text-2xl text-wrap"><?php echo $row["titulo"]; ?></h2>
+                <img src="./img/portadas/portada.png" alt="Imagen de la Card" class="card-image m-4 w-fit h-auto rounded">
                 <button class="card-button bg-azul border border-solid rounded p-2 m-1 text-blanco cursor-pointer" onclick="openModal('<?php echo $row["titulo"]; ?>')">Ver más...</button>
 
                 <!-- Modal -->
@@ -67,7 +64,7 @@ if (!$result) {
                         <span class="close float-right text-xl font-bold hover:cursor-pointer" onclick="closeModal()">&times;</span>
                         <div class="flex justify-between">
                             <div>
-                                <h2 class="card-title mt-1 text-2xl"><?php echo $row["titulo"]; ?></h2>
+                                <h2 class="card-title m-2 text-2xl"><?php echo $row["titulo"]; ?></h2>
                                 <ol>
                                     <li>Edición: <?php echo $row["edicion"]; ?></li>
                                     <li>Material: <?php echo $row["material"]; ?></li>
@@ -83,7 +80,7 @@ if (!$result) {
                                     <li>Signatura topográfica: <?php echo $row["signatura"]; ?></li>
                                 </ol>
                             </div>
-                            <img src="./img/portadas/portada.jpg" alt="Imagen de la Card" class="modal-image h-52 m-4 rounded">
+                            <img src="./img/portadas/portada.png" alt="Imagen de la Card" class="modal-image h-52 m-4 rounded">
                         </div>
                         <hr class="m-2">
                         <div class="flex">
@@ -105,8 +102,12 @@ if (!$result) {
 
 
     <!-- Footer: legales, etc. -->
-    <footer class= "border-t-0 border-l-0 border-r-0 border-b-4 border-b-azul h-20 flex border border-solid">
-    <h6>©Biblioteca Popular Sanlorencista "Leónidas Barletta"</h6>
+    <footer class= "flex flex-wrap items-left justify-left bg-gris border-t-0 border-l-0 border-r-0 border-b-4 border-b-rojo h-20">
+        <div class="m-4">
+            <h6>©Biblioteca Popular Sanlorencista "Leónidas Barletta"</h6>
+            <h6>Desarrollado por <a href="" class="font-bold">BrunoDev</a></h6>
+        </div>
+    
     </footer>
 
     <script src="./js/script.js"></script>
