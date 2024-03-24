@@ -16,11 +16,26 @@
 
     <!-- Header: contiene el navbar -->
     <header class="flex justify-between border-t-0 border-l-0 border-r-0 border-b-4 border-b-azul h-20  border border-solid">
-        <li class="flex flex-wrap items-center justify-center text-gray-900 m-4">
-            <ul class="me-4 hover:underline md:me-6">Inicio</ul>
-            <ul class="me-4 hover:underline md:me-6">Novedades</ul>
-            <ul class="me-4 hover:underline md:me-6"><a href="./carga.php">Cargar</a></ul>
-        </li>
+        <ul class="flex flex-wrap items-center justify-center text-gray-900 m-4">
+            <li class="me-4 hover:underline md:me-6">
+                Inicio
+            </li>
+            <li class="me-4 hover:underline md:me-6">
+                <a href="./novedades.php">Novedades</a>
+            </li>
+            <li class="me-4 hover:underline md:me-6">
+                <a href="./carga.php">Cargar</a>
+            </li>
+            <li class="me-4 hover:underline md:me-6">
+                <a href="./lista_items.php">Lista Items</a>
+            </li>
+            <li class="relative group">Listas
+                <ul class="absolute hidden bg-white border border-gray-200 py-1 mt-2 rounded-md shadow-lg group-hover:block">
+                    <li><a href="#">Items</a></li>
+                    <li><a href="#">Autoridades</a></li>
+                </ul>
+            </li>
+        </ul>
         <li class="flex flex-wrap items-center justify-end text-gray-900 m-4">
             <ul class="me-4 hover:underline md:me-6">Ingresar</ul>
         </li>
