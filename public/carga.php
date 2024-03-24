@@ -38,13 +38,20 @@
         <div class="bg-gris flex flex-col p-2 rounded mb-2 mt-2">
             <label for="titulo">Título:</label>
             <input type="text" id="titulo" name="titulo" class="border border-solid rounded">
+
+            <label for="otra_info">Otra información sobre el título:</label>
+            <input type="text" id="otra_info" name="otra_info" class="border border-solid rounded">
             
             <label for="autor">Autor:</label>
             <select id="autor" name="autor" class="border border-solid rounded">
                 <?php
-                include 'conexion.php'; // Incluye el archivo de conexión
+                // Conexión a la base de datos
+                    $servername = "localhost";
+                    $username = "c2030171_opac";
+                    $password = "su87TEmavu";
+                    $database = "c2030171_opac";
     
-                $conn = new mysqli($servername, $username, $password, $dbname);
+                $conn = new mysqli($servername, $username, $password, $database);
     
                 // // // Verificar conexión
                 if ($conn->connect_error) {

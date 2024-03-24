@@ -1,5 +1,9 @@
 <?php
-include 'conexion.php'; // Incluye el archivo de conexión
+// Conexión a la base de datos
+$servername = "localhost";
+$username = "c2030171_opac";
+$password = "su87TEmavu";
+$database = "c2030171_opac";
 
 $conn = new mysqli($servername, $username, $password, $database);
 
@@ -22,9 +26,13 @@ $portada = $_POST['portada'];
 $signatura = $_POST['signatura'];
 $disponibilidad = $_POST['disponibilidad'];
 
+// echo "Otra Info: " . $_POST['otra_info'];
+
 
 // Preparar la consulta SQL
-$sql = "INSERT INTO items (titulo, otra_info, edicion, material, publi_distribucion, descripcion_fisica, serie, notas, numero_normalizado, portada, signatura, disponibilidad) VALUES ('$titulo', '$otra_info, '$edicion', '$material','$publicacion','$descripcion','$serie','$notas','$normalizado','$portada','$signatura','$disponibilidad')";
+$sql = "INSERT INTO items (titulo, otra_info, edicion, material, publi_distribucion, descripcion_fisica, serie, notas, numero_normalizado, portada, signatura, disponibilidad) VALUES ('$titulo', '$otra_info', '$edicion', '$material','$publicacion','$descripcion','$serie','$notas','$normalizado','$portada','$signatura','$disponibilidad')";
+
+// echo "Consulta SQL: " . $sql;
 
 // Ejecutar la consulta
 if ($conn->query($sql) === TRUE) {

@@ -15,7 +15,7 @@
 <body>
 
     <!-- Header: contiene el navbar -->
-    <header class="flex content-between border-t-0 border-l-0 border-r-0 border-b-4 border-b-azul h-20  border border-solid">
+    <header class="flex justify-between border-t-0 border-l-0 border-r-0 border-b-4 border-b-azul h-20  border border-solid">
         <li class="flex flex-wrap items-center justify-center text-gray-900 m-4">
             <ul class="me-4 hover:underline md:me-6">Inicio</ul>
             <ul class="me-4 hover:underline md:me-6">Novedades</ul>
