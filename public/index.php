@@ -15,11 +15,14 @@
 <body>
 
     <!-- Header: contiene el navbar -->
-    <header class="border-t-0 border-l-0 border-r-0 border-b-4 border-b-azul h-20 flex border border-solid">
+    <header class="flex content-between border-t-0 border-l-0 border-r-0 border-b-4 border-b-azul h-20  border border-solid">
         <li class="flex flex-wrap items-center justify-center text-gray-900 m-4">
             <ul class="me-4 hover:underline md:me-6">Inicio</ul>
             <ul class="me-4 hover:underline md:me-6">Novedades</ul>
             <ul class="me-4 hover:underline md:me-6"><a href="./carga.php">Cargar</a></ul>
+        </li>
+        <li class="flex flex-wrap items-center justify-end text-gray-900 m-4">
+            <ul class="me-4 hover:underline md:me-6">Ingresar</ul>
         </li>
     </header>
 
@@ -59,6 +62,7 @@ if (!$result) {
     ?>
             <div class="card flex flex-col items-center justify-between m-4 p-4 text-center border rounded bg-gris">
                 <h2 class="card-title mt-1 text-2xl text-wrap"><?php echo $row["titulo"]; ?></h2>
+                <h4 class="card-title text-wrap"><?php echo $row["otra_info"]; ?></h4>
                 <img src="./img/portadas/portada.png" alt="Imagen de la Card" class="card-image m-4 w-fit h-auto rounded">
                 <button class="card-button bg-azul border border-solid rounded p-2 m-1 text-blanco cursor-pointer" onclick="openModal('<?php echo $row["titulo"]; ?>')">Ver más...</button>
 
@@ -69,7 +73,8 @@ if (!$result) {
                         <div class="flex justify-between">
                             <div>
                                 <h2 class="card-title m-2 text-2xl"><?php echo $row["titulo"]; ?></h2>
-                                <ol>
+                                <h4 class="card-title text-wrap"><?php echo $row["otra_info"]; ?></h4>
+                                <ol class="text-left">
                                     <li>Edición: <?php echo $row["edicion"]; ?></li>
                                     <li>Material: <?php echo $row["material"]; ?></li>
                                     <li>Publicación: <?php echo $row["publi_distribucion"]; ?></li>
