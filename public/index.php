@@ -60,7 +60,7 @@ if (!$result) {
         // Imprime los datos dentro de la card
         while ($row = $result->fetch_assoc()) {
     ?>
-            <div class="card flex flex-col items-center justify-between m-4 p-4 text-center border rounded bg-gris">
+            <div class="card flex flex-col items-center justify-between m-4 p-4 border rounded bg-gris">
                 <h2 class="card-title mt-1 text-2xl text-wrap"><?php echo $row["titulo"]; ?></h2>
                 <h4 class="card-title text-wrap"><?php echo $row["otra_info"]; ?></h4>
                 <img src="./img/portadas/portada.png" alt="Imagen de la Card" class="card-image m-4 w-fit h-auto rounded">
@@ -74,7 +74,8 @@ if (!$result) {
                             <div>
                                 <h2 class="card-title m-2 text-2xl"><?php echo $row["titulo"]; ?></h2>
                                 <h4 class="modal-otra-info text-wrap"><?php echo $row["otra_info"]; ?></h4>
-                                <ol class="text-left">
+                                <hr>
+                                <ol>
                                     <li>Edición: <?php echo $row["edicion"]; ?></li>
                                     <li>Material: <?php echo $row["material"]; ?></li>
                                     <li>Publicación: <?php echo $row["publi_distribucion"]; ?></li>
