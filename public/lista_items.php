@@ -94,6 +94,7 @@ if ($result->num_rows > 0) {
         <p class='ml-2 font-bold'>Disponibilidad: </p>" . $row["disponibilidad"] . " <br> 
         <p class='ml-2 font-bold'>Signatura topográfica: </p>" . $row["signatura"] . " <br> 
         <p class='ml-2 font-bold'>Portada: </p>" . $row["portada"] . "<br>
+        <button id='eliminar-item'>Eliminar</button>
         </div> <hr>";
         // Puedes ajustar los nombres de las columnas según tu tabla
     }
@@ -115,7 +116,9 @@ $conn->close();
     
     </footer>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <script src="./js/eliminar_item.js"></script>
 </body>
 
 </html>
