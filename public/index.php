@@ -31,8 +31,8 @@
                 </li>
                 <li class="relative float-left">Listas
                     <ul class="absolute hidden bg-white border border-gray-200 py-1 mt-2 rounded-md shadow-lg">
-                        <li class="float-none hover:block"><a href="#">Items</a></li>
-                        <li class="float-none hover:block"><a href="#">Autoridades</a></li>
+                        <li class="float-none hover:block"><a href="./lista_items.php">Items</a></li>
+                        <li class="float-none hover:block"><a href="./lista_autoridades.php">Autoridades</a></li>
                     </ul>
                 </li>
             </ul>
