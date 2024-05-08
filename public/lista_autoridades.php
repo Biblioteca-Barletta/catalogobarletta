@@ -46,7 +46,7 @@
     <section class="flex flex-wrap items-center justify-center text-gray-900 bg-gris border-t-0 border-l-0 border-r-0 border-b-4 border-b-rojo">
     <p>Ordenar por:</p>
         <button class="bg-blanco shadow-xl border rounded p-1 m-1">Id</button>
-        <button class="bg-blanco shadow-xl border rounded p-1 m-1">Titulo</button>
+        <button class="bg-blanco shadow-xl border rounded p-1 m-1">Autor</button>
         <button class="bg-blanco shadow-xl border rounded p-1 m-1">Items</button>
     </section>
     <section class="m-2 p-2">
