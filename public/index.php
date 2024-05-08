@@ -16,29 +16,29 @@
 
     <!-- Header: contiene el navbar -->
     <header class="flex justify-between border-t-0 border-l-0 border-r-0 border-b-4 border-b-azul h-20  border border-solid">
-        <ul class="flex flex-wrap items-center justify-center text-gray-900 m-4">
-            <li class="me-4 hover:underline md:me-6">
-                Inicio
-            </li>
-            <li class="me-4 hover:underline md:me-6">
-                <a href="./novedades.php">Novedades</a>
-            </li>
-            <li class="me-4 hover:underline md:me-6">
-                <a href="./carga.php">Cargar</a>
-            </li>
-            <li class="me-4 hover:underline md:me-6">
-                <a href="./lista_items.php">Lista Items</a>
-            </li>
-            <li class="relative group">Listas
-                <ul class="absolute hidden bg-white border border-gray-200 py-1 mt-2 rounded-md shadow-lg group-hover:block">
-                    <li><a href="#">Items</a></li>
-                    <li><a href="#">Autoridades</a></li>
-                </ul>
-            </li>
-        </ul>
-        <li class="flex flex-wrap items-center justify-end text-gray-900 m-4">
-            <ul class="me-4 hover:underline md:me-6">Ingresar</ul>
-        </li>
+            <ul class="flex flex-wrap items-center justify-center text-gray-900 m-4">
+                <li class="relative float-left me-4 hover:underline md:me-6">
+                    Inicio
+                </li>
+                <li class="relative float-left me-4 hover:underline md:me-6">
+                    <a href="./novedades.php">Novedades</a>
+                </li>
+                <li class="relative float-left me-4 hover:underline md:me-6">
+                    <a href="./carga.php">Cargar</a>
+                </li>
+                <li class="relative float-left me-4 hover:underline md:me-6">
+                    <a href="./lista_items.php">Lista Items</a>
+                </li>
+                <li class="relative float-left">Listas
+                    <ul class="absolute hidden bg-white border border-gray-200 py-1 mt-2 rounded-md shadow-lg">
+                        <li class="float-none hover:block"><a href="#">Items</a></li>
+                        <li class="float-none hover:block"><a href="#">Autoridades</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="flex flex-wrap items-center justify-end text-gray-900 m-4">
+                <li class="me-4 hover:underline md:me-6">Ingresar</li>
+            </ul>
     </header>
 
     <!-- Section 1: contiene la caja de búsqueda -->
@@ -78,7 +78,7 @@ if (!$result) {
             <div class="card flex flex-col items-center justify-between m-4 p-4 border rounded bg-gris">
                 <h2 class="card-title mt-1 text-2xl text-wrap"><?php echo $row["titulo"]; ?></h2>
                 <h4 class="card-title text-wrap"><?php echo $row["otra_info"]; ?></h4>
-                <img src="./img/portadas/portada.png" alt="Imagen de la Card" class="card-image m-4 w-fit h-auto rounded">
+                <img src="./img/portadas/portada.png" alt="Imagen de la Card" class="card-image m-4 w-fit h-auto rounded shadow-xl">
                 <button class="card-button bg-azul border border-solid rounded p-2 m-1 text-blanco cursor-pointer" onclick="openModal('<?php echo $row["titulo"]; ?>', '<?php echo $row["otra_info"]; ?>')">Ver más...</button>
 
                 <!-- Modal -->

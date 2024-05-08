@@ -44,15 +44,10 @@
     <!-- Section 1: contiene la caja de búsqueda -->
 
     <section class="flex flex-wrap items-center justify-center text-gray-900 bg-gris border-t-0 border-l-0 border-r-0 border-b-4 border-b-rojo">
-        <input type="search" name="buscar" id="buscar" class="border border-solid w-4/5 h-10 rounded p-1 m-4"
-            placeholder="Buscar...">
-        <a href="">Búsqueda avanzada</a>
-    </section>
-    <section class="botonera flex flex-row items-center p-2 m-2 border border-solid bg-gris rounded">
-        <p>Ordenar por:</p>
-        <button class="border rounded p-1 m-1">Id</button>
-        <button class="border rounded p-1 m-1">Titulo</button>
-        <button class="border rounded p-1 m-1">Disponibilidad</button>
+    <p>Ordenar por:</p>
+        <button class="bg-blanco shadow-xl border rounded p-1 m-1">Id</button>
+        <button class="bg-blanco shadow-xl border rounded p-1 m-1">Titulo</button>
+        <button class="bg-blanco shadow-xl border rounded p-1 m-1">Disponibilidad</button>
     </section>
     <section class="m-2 p-2">
 
