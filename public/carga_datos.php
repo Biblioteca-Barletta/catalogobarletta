@@ -15,6 +15,7 @@ if ($conn->connect_error) {
 // Obtener los datos del formulario
 $titulo = $_POST['titulo'];
 $otra_info = $_POST['otra_info'];
+$autor_id = $_POST['autor'];
 $edicion = $_POST['edicion'];
 $material = $_POST['material'];
 $publicacion = $_POST['publicacion'];
@@ -30,7 +31,7 @@ $disponibilidad = $_POST['disponibilidad'];
 
 
 // Preparar la consulta SQL
-$sql = "INSERT INTO items (titulo, otra_info, edicion, material, publi_distribucion, descripcion_fisica, serie, notas, numero_normalizado, portada, signatura, disponibilidad) VALUES ('$titulo', '$otra_info', '$edicion', '$material','$publicacion','$descripcion','$serie','$notas','$normalizado','$portada','$signatura','$disponibilidad')";
+$sql = "INSERT INTO items (titulo, otra_info, id_autor, edicion, material, publi_distribucion, descripcion_fisica, serie, notas, numero_normalizado, portada, signatura, disponibilidad) VALUES ('$titulo', '$otra_info', '$autor_id', '$edicion', '$material','$publicacion','$descripcion','$serie','$notas','$normalizado','$portada','$signatura','$disponibilidad')";
 
 // echo "Consulta SQL: " . $sql;
 

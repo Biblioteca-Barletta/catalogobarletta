@@ -86,7 +86,7 @@ if (!$result) {
                     <div class="modal-content relative inset-y-1/4 p-5 border bg-gris">
                         <span class="close float-right text-xl font-bold hover:cursor-pointer" onclick="closeModal()">&times;</span>
                         <div class="flex justify-between">
-                            <div>
+                            <div class="w-full">
                                 <h2 class="card-title m-2 text-2xl"><?php echo $row["titulo"]; ?></h2>
                                 <h4 class="modal-otra-info text-wrap"><?php echo $row["otra_info"]; ?></h4>
                                 <hr>

@@ -67,7 +67,10 @@ if ($conn->connect_error) {
 }
 
 // Consulta SQL para seleccionar todas las filas de la tabla 'items'
-$sql = "SELECT * FROM items";
+$sql = "SELECT items.*, autoridades.forma_autorizada AS nombre_autor FROM items JOIN autoridades ON items.id_autor = autoridades.id_autor ORDER BY items.titulo ASC ";
+
+// Dejo la consulta comentada por si tengo que volver a utilizarla
+// $sql = "SELECT * FROM items  ORDER BY `items`.`titulo` ASC";
 $result = $conn->query($sql);
 
 // Verificar si hay filas devueltas
@@ -77,7 +80,8 @@ if ($result->num_rows > 0) {
         echo "
         <div class='bg-gris m-1 p-1 rounded'>
         <p class='ml-2 font-bold'>ID: </p>" . $row["id_items"] . " <br> 
-        <p class='ml-2 font-bold'>Titulo: </p>" . $row["titulo"] . " <br> 
+        <p class='ml-2 font-bold'>Titulo: </p>" . $row["titulo"] . " <br>
+        <p class='ml-2 font-bold'>Autor: </p>" . $row["nombre_autor"] . " <br>
         <p class='ml-2 font-bold'>Otra información sobre el título: </p>" . $row["otra_info"] . " <br> 
         <p class='ml-2 font-bold'>Edición: </p>" . $row["edicion"] . " <br> 
         <p class='ml-2 font-bold'>Material: </p>" . $row["material"] . " <br> 

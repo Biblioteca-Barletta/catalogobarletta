@@ -59,13 +59,17 @@
                 }
     
                 // Consulta SQL para obtener las opciones
-                $sql = "SELECT forma_autorizada FROM autoridades";
+                $sql = "SELECT id_autor, forma_autorizada FROM autoridades ORDER BY forma_autorizada ASC";
+
                 $result = $conn->query($sql);
     
                 if ($result->num_rows > 0) {
                     // Imprimir opciones en el cuadro desplegable
                     while($row = $result->fetch_assoc()) {
-                        echo "<option value='" . $row['forma_autorizada'] . "'>" . $row['forma_autorizada'] . "</option>";
+                        echo"
+                        <option value='" . $row['id_autor'] . "'>
+                            " . $row['forma_autorizada'] . "
+                        </option>";
                     }
                 } else {
                     echo "No se encontraron opciones.";
