@@ -17,7 +17,7 @@
     <header class="flex justify-between border-t-0 border-l-0 border-r-0 border-b-4 border-b-azul h-20  border border-solid">
             <ul class="flex flex-wrap items-center justify-center text-gray-900 m-4">
                 <li class="relative float-left me-4 hover:underline md:me-6">
-                    Inicio
+                    <a href="./index.php">Inicio</a>
                 </li>
                 <li class="relative float-left me-4 hover:underline md:me-6">
                     <a href="./novedades.php">Novedades</a>

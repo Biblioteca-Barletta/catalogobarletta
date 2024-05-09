@@ -18,7 +18,7 @@
     <header class="flex justify-between border-t-0 border-l-0 border-r-0 border-b-4 border-b-azul h-20  border border-solid">
             <ul class="flex flex-wrap items-center justify-center text-gray-900 m-4">
                 <li class="relative float-left me-4 hover:underline md:me-6">
-                    Inicio
+                    <a href="./index.php">Inicio</a>
                 </li>
                 <li class="relative float-left me-4 hover:underline md:me-6">
                     <a href="./novedades.php">Novedades</a>
@@ -53,11 +53,12 @@
     </section>
 
     <!-- Section 2: contiene las novedades con cardbox -->
-    <section class="border border-solid border-b-4 border-l-0 border-r-0 border-b-azul grid grid-cols-5">
+    <section class="flex flex-col items-center border border-solid border-b-4 border-l-0 border-r-0 border-b-azul">
         <h1 class="font-bold m-4">
     Novedades
 </h1>
-<div class="grid grid-cols-5 grid-rows-1">
+<!-- Probando el flex responsive: flex flex-col text-center md:flex-row  -->
+<div class="flex flex-col text-center md:flex-row">
     <?php
        include 'conexion.php'; // Incluye el archivo de conexión
 
@@ -80,16 +81,19 @@ if (!$result) {
         while ($row = $result->fetch_assoc()) {
     ?>
             <div class="card flex flex-col items-center justify-between m-4 p-4 border rounded bg-gris">
-                <h2 class="card-title mt-1 text-2xl text-wrap">
-                    <?php echo $row["titulo"]; ?>
-                </h2>
-                <h4 class="card-title text-wrap">
-                    <?php echo $row["otra_info"]; ?>
-                </h4>
-                <h4 class="card-title text-wrap">
-                    <?php echo $row["nombre_autor"]; ?>
-                </h4>
-                <img src="./img/portadas/portada.png" alt="Imagen de la Card" class="card-image m-4 w-fit h-auto rounded shadow-xl">
+                <div>
+                    <h2 class="card-title m-2 text-2xl text-wrap">
+                        <?php echo $row["titulo"]; ?>
+                    </h2>
+                    <h4 class="card-title text-wrap">
+                        <?php echo $row["otra_info"]; ?>
+                    </h4>
+                    <h4 class="card-title text-wrap">
+                        <?php echo $row["nombre_autor"]; ?>
+                    </h4>
+                </div>
+                <!-- Se saca la imagen por el momento hasta que se pueda trabajar mejor con las portadas -->
+                <!-- <img src="./img/portadas/portada.png" alt="Imagen de la Card" class="card-image m-4 w-1 h-1 rounded shadow-xl"> -->
                 <button class="card-button bg-azul border border-solid rounded p-2 m-1 text-blanco cursor-pointer" onclick="openModal('<?php echo $row["titulo"]; ?>', '<?php echo $row["otra_info"]; ?>')">Ver más...</button>
 
                 <!-- Modal -->

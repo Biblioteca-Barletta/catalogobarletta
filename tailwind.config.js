@@ -6,7 +6,7 @@ module.exports = {
       azul: '#263d54',
       rojo: '#bf1b27',
       gris: 'rgb(226 232 240)',
-      blanco: 'rgb(255 255 255);'
+      blanco: 'rgb(255 255 255)'
     },
     extend: {
       boxShadow: {
@@ -15,5 +15,13 @@ module.exports = {
     },
   },
   plugins: [],
+  variants: {
+    extend: {
+      // Aquí se habilitan las variantes responsive para todas las clases
+      display: ['responsive'],
+      visibility: ['responsive'],
+      // Puedes habilitar otras variantes aquí según tus necesidades
+    }
+  }
 }
 
