@@ -60,11 +60,18 @@
 <!-- Probando el flex responsive: flex flex-col text-center md:flex-row  -->
 <div class="flex flex-col text-center md:flex-row">
     <?php
+    header('Content-Type: text/html; charset=utf-8');
        include 'conexion.php'; // Incluye el archivo de conexión
 
 // Verificar conexión
 if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
+}
+
+// Configuración la codificación de caracteres a UTF-8
+if (!$conn->set_charset("utf8")) {
+    printf("Error cargando el conjunto de caracteres utf8: %s\n", $conn->error);
+    exit();
 }
 
     // Realiza la consulta SQL

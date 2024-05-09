@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
@@ -55,6 +55,7 @@
     <section class="m-2 p-2">
 
     <?php
+    header('Content-Type: text/html; charset=utf-8');
 // Conexión a la base de datos
 $servername = "localhost";
 $username = "c2030171_opac";
@@ -68,6 +69,25 @@ $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
+// // Configuración la codificación de caracteres a UTF-8
+// if (!$conn->set_charset("utf8")) {
+//     printf("Error cargando el conjunto de caracteres utf8: %s\n", $conn->error);
+//     exit();
+// }
+
+// Consulta SQL para obtener la cantidad de items
+$sqlAut = "SELECT COUNT(*) AS cantidad_aut FROM autoridades";
+$resultAut = $conn->query($sqlAut);
+$rowAut = $resultAut->fetch_assoc();
+$cantidad_Aut = $rowAut["cantidad_aut"];
+
+echo "
+    <div class='flex flex-col'>
+        <label class='text-center font-bold'>Cantidad de autoridades</label>
+        <p class='text-center'>" . $cantidad_Aut . "</p>
+    </div>
+    ";
 
 // Consulta SQL para seleccionar todas las filas de la tabla 'items'
 $sql = "SELECT * FROM autoridades  ORDER BY `autoridades`.`forma_autorizada` ASC";

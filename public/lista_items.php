@@ -54,7 +54,10 @@
     </section>
     <section class="m-2 p-2">
 
+
+    
     <?php
+    header('Content-Type: text/html; charset=utf-8');
 // Conexión a la base de datos
 $servername = "localhost";
 $username = "c2030171_opac";
@@ -69,11 +72,29 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Consulta SQL para seleccionar todas las filas de la tabla 'items'
-$sql = "SELECT items.*, autoridades.forma_autorizada AS nombre_autor FROM items JOIN autoridades ON items.id_autor = autoridades.id_autor ORDER BY items.titulo ASC ";
+// Configuración la codificación de caracteres a UTF-8
+if (!$conn->set_charset("utf8")) {
+    printf("Error cargando el conjunto de caracteres utf8: %s\n", $conn->error);
+    exit();
+}
 
-// Dejo la consulta comentada por si tengo que volver a utilizarla
-// $sql = "SELECT * FROM items  ORDER BY `items`.`titulo` ASC";
+// Consulta SQL para obtener la cantidad de items
+$sqlItems = "SELECT COUNT(*) AS cantidad_items FROM items";
+$resultItems = $conn->query($sqlItems);
+$rowItems = $resultItems->fetch_assoc();
+$cantidad_items = $rowItems["cantidad_items"];
+
+echo "
+    <div class='flex flex-col'>
+        <label class='text-center font-bold'>Cantidad de items</label>
+        <p class='text-center'>" . $cantidad_items . "</p>
+    </div>
+    ";
+
+
+// Consulta SQL para seleccionar todas las filas de la tabla 'items'
+$sql = "SELECT items.*, autoridades.forma_autorizada AS nombre_autor FROM items JOIN autoridades ON items.id_autor = autoridades.id_autor ORDER BY items.titulo ASC";
+
 $result = $conn->query($sql);
 
 // Verificar si hay filas devueltas
