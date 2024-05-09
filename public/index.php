@@ -29,12 +29,15 @@
                 <li class="relative float-left me-4 hover:underline md:me-6">
                     <a href="./lista_items.php">Lista Items</a>
                 </li>
-                <li class="relative float-left">Listas
+                <li class="relative float-left me-4 hover:underline md:me-6">
+                    <a href="./lista_autoridades.php">Lista autoridades</a>
+                </li>
+                <!-- <li class="relative float-left">Listas
                     <ul class="absolute hidden bg-white border border-gray-200 py-1 mt-2 rounded-md shadow-lg">
                         <li class="float-none hover:block"><a href="./lista_items.php">Items</a></li>
                         <li class="float-none hover:block"><a href="./lista_autoridades.php">Autoridades</a></li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
             <ul class="flex flex-wrap items-center justify-end text-gray-900 m-4">
                 <li class="me-4 hover:underline md:me-6">Ingresar</li>
@@ -64,7 +67,8 @@ if ($conn->connect_error) {
 }
 
     // Realiza la consulta SQL
-    $sql = "SELECT * FROM items ORDER BY id_items DESC LIMIT 5";
+    $sql="SELECT items.*, autoridades.forma_autorizada AS nombre_autor FROM items JOIN autoridades ON items.id_autor = autoridades.id_autor ORDER BY id_items DESC LIMIT 5";
+    //$sql = "SELECT * FROM items ORDER BY id_items DESC LIMIT 5";
     $result = $conn->query($sql);
 
 if (!$result) {
@@ -76,8 +80,15 @@ if (!$result) {
         while ($row = $result->fetch_assoc()) {
     ?>
             <div class="card flex flex-col items-center justify-between m-4 p-4 border rounded bg-gris">
-                <h2 class="card-title mt-1 text-2xl text-wrap"><?php echo $row["titulo"]; ?></h2>
-                <h4 class="card-title text-wrap"><?php echo $row["otra_info"]; ?></h4>
+                <h2 class="card-title mt-1 text-2xl text-wrap">
+                    <?php echo $row["titulo"]; ?>
+                </h2>
+                <h4 class="card-title text-wrap">
+                    <?php echo $row["otra_info"]; ?>
+                </h4>
+                <h4 class="card-title text-wrap">
+                    <?php echo $row["nombre_autor"]; ?>
+                </h4>
                 <img src="./img/portadas/portada.png" alt="Imagen de la Card" class="card-image m-4 w-fit h-auto rounded shadow-xl">
                 <button class="card-button bg-azul border border-solid rounded p-2 m-1 text-blanco cursor-pointer" onclick="openModal('<?php echo $row["titulo"]; ?>', '<?php echo $row["otra_info"]; ?>')">Ver más...</button>
 
@@ -87,7 +98,7 @@ if (!$result) {
                         <span class="close float-right text-xl font-bold hover:cursor-pointer" onclick="closeModal()">&times;</span>
                         <div class="flex justify-between">
                             <div class="w-full">
-                                <h2 class="card-title m-2 text-2xl"><?php echo $row["titulo"]; ?></h2>
+                                <h2 class="card-title m-2 text-2xl"><?php echo $row["titulo"], ["nombre_autor"]; ?></h2>
                                 <h4 class="modal-otra-info text-wrap"><?php echo $row["otra_info"]; ?></h4>
                                 <hr>
                                 <ol>
