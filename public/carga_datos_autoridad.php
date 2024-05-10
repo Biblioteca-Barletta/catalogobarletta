@@ -1,7 +1,7 @@
 <?php
 include 'conexion.php'; // Incluye el archivo de conexión
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+// $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Verificar la conexión
 if ($conn->connect_error) {

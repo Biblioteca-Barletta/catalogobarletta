@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
@@ -103,7 +104,6 @@ if ($result->num_rows > 0) {
         <p class='ml-2'>Autor: " . $row["forma_autorizada"] . "</p><br>
         <button id='eliminar-item'>Eliminar</button>
         </div> <hr>";
-        // Puedes ajustar los nombres de las columnas según tu tabla
     }
 } else {
     echo "No se encontraron resultados en la tabla 'items'.";
