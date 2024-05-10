@@ -55,6 +55,9 @@
             <option value="opcion2">
                 Autoridad
             </option>
+            <option value="opcion3">
+                Clasificación
+            </option>
         </select>
         <hr>
         <div class="bg-gris flex flex-col p-2 rounded mb-2 mt-2">

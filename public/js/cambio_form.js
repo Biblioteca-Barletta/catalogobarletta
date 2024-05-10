@@ -11,5 +11,7 @@ select.addEventListener("change", function() {
         window.location.href = "carga.php";
     } else if (selectedValue === "opcion2") {
         window.location.href = "carga_autoridad.php";
+    } else if (selectedValue === "opcion3") {
+        window.location.href = "carga_clas.php";
     }
 });
