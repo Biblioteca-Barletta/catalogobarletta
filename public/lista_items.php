@@ -94,7 +94,8 @@ echo "
 
 
 // Consulta SQL para seleccionar todas las filas de la tabla 'items'
-$sql = "SELECT items.*, autoridades.forma_autorizada AS nombre_autor FROM items JOIN autoridades ON items.id_autor = autoridades.id_autor ORDER BY items.titulo ASC";
+$sql = "SELECT items.*, autoridades.forma_autorizada AS nombre_autor FROM items JOIN autoridades ON items.id_autor = autoridades.id_autor ORDER BY items.id_items ASC";
+// $sql = "SELECT items.*, autoridades.forma_autorizada AS nombre_autor FROM items JOIN autoridades ON items.id_autor = autoridades.id_autor ORDER BY items.titulo ASC";
 
 $result = $conn->query($sql);
 
