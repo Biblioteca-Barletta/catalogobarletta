@@ -33,6 +33,9 @@
                 <li class="relative float-left me-4 hover:underline md:me-6">
                     <a href="./lista_autoridades.php">Lista autoridades</a>
                 </li>
+                <li class="relative float-left me-4 hover:underline md:me-6">
+                    <a href="./lista_clas.php">Lista clasificación</a>
+                </li>
                 <!-- <li class="relative float-left">Listas
                     <ul class="absolute hidden bg-white border border-gray-200 py-1 mt-2 rounded-md shadow-lg">
                         <li class="float-none hover:block"><a href="./lista_items.php">Items</a></li>
