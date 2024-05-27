@@ -69,6 +69,15 @@
             
             <label for="directa">Forma directa:</label>
             <input id="directa" name="directa" class="border border-solid rounded">
+
+            <label for="corporativa">¿Entidad corporativa?</label>
+                <label>
+                    <input type="radio" id="corporativa_si" name="corporativa" value="1" class="border border-solid rounded"> Sí
+                </label>
+                <label>
+                    <input type="radio" id="corporativa_no" name="corporativa" value="0" class="border border-solid rounded"> No
+                </label>
+
             <label for="cutter">Cutter-Sanborn:</label>
             <input id="cutter" name="cutter" class="border border-solid rounded">
         </div>
