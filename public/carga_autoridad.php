@@ -69,6 +69,8 @@
             
             <label for="directa">Forma directa:</label>
             <input id="directa" name="directa" class="border border-solid rounded">
+            <label for="cutter">Cutter-Sanborn:</label>
+            <input id="cutter" name="cutter" class="border border-solid rounded">
         </div>
         <button type="submit"
             class="bg-azul border border-solid rounded p-2 m-1 text-blanco cursor-pointer">Enviar</button>

@@ -11,10 +11,11 @@ if ($conn->connect_error) {
 // Obtener los datos del formulario
 $forma_autorizada = $_POST['autorizada'];
 $forma_directa = $_POST['directa'];
+$cutter = $_POST['cutter'];
 
 
 // Preparar la consulta SQL
-$sql = "INSERT INTO autoridades (forma_autorizada, forma_directa) VALUES ('$forma_autorizada', '$forma_directa')";
+$sql = "INSERT INTO autoridades (forma_autorizada, forma_directa, cutter) VALUES ('$forma_autorizada', '$cutter')";
 
 // Ejecutar la consulta
 if ($conn->query($sql) === TRUE) {

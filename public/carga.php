@@ -74,6 +74,7 @@
             <select id="autor" name="autor" class="border border-solid rounded">
                 <option value='blank' selected>
                 <?php
+                header('Content-Type: text/html; charset=utf-8');
                 // Conexión a la base de datos
                     $servername = "localhost";
                     $username = "c2030171_opac";
