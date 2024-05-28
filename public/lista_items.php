@@ -108,21 +108,22 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo "
         <div class='bg-gris m-1 p-1 rounded'>
-        <p class='ml-2 font-bold'>ID: </p>" . $row["id_items"] . " <br> 
-        <p class='ml-2 font-bold'>Titulo: </p>" . $row["titulo"] . " <br>
-        <p class='ml-2 font-bold'>Autor: </p>" . $row["nombre_autor"] . " <br>
-        <p class='ml-2 font-bold'>Otra información sobre el título: </p>" . $row["otra_info"] . " <br> 
-        <p class='ml-2 font-bold'>Edición: </p>" . $row["edicion"] . " <br> 
-        <p class='ml-2 font-bold'>Material: </p>" . $row["material"] . " <br> 
-        <p class='ml-2 font-bold'>Publicación: </p>" . $row["publi_distribucion"] . " <br> 
-        <p class='ml-2 font-bold'>Descripción física: </p>" . $row["descripcion_fisica"] . " <br> 
-        <p class='ml-2 font-bold'>Serie: </p>" . $row["serie"] . " <br> 
-        <p class='ml-2 font-bold'>Notas: </p>" . $row["notas"] . " <br> 
-        <p class='ml-2 font-bold'>Número normalizado: </p>" . $row["numero_normalizado"] . " <br> 
-        <p class='ml-2 font-bold'>Disponibilidad: </p>" . $row["disponibilidad"] . " <br> 
-        <p class='ml-2 font-bold'>Signatura topográfica: </p>" . $row["signatura"] . " <br> 
-        <p class='ml-2 font-bold'>Portada: </p>" . $row["portada"] . "<br>
-        <button id='eliminar-item'>Eliminar</button>
+        <p class='ml-2 font-bold id_items'>ID: </p>" . $row["id_items"] . " <br> 
+        <p class='ml-2 font-bold titulo'>Titulo: </p>" . $row["titulo"] . " <br>
+        <p class='ml-2 font-bold nombre_autor'>Autor: </p>" . $row["nombre_autor"] . " <br>
+        <p class='ml-2 font-bold otra_info'>Otra información sobre el título: </p>" . $row["otra_info"] . " <br> 
+        <p class='ml-2 font-bold edicion'>Edición: </p>" . $row["edicion"] . " <br> 
+        <p class='ml-2 font-bold material'>Material: </p>" . $row["material"] . " <br> 
+        <p class='ml-2 font-bold publi_distribucion'>Publicación: </p>" . $row["publi_distribucion"] . " <br> 
+        <p class='ml-2 font-bold descripcion_fisica'>Descripción física: </p>" . $row["descripcion_fisica"] . " <br> 
+        <p class='ml-2 font-bold serie'>Serie: </p>" . $row["serie"] . " <br> 
+        <p class='ml-2 font-bold notas'>Notas: </p>" . $row["notas"] . " <br> 
+        <p class='ml-2 font-bold numero_normalizado'>Número normalizado: </p>" . $row["numero_normalizado"] . " <br> 
+        <p class='ml-2 font-bold disponibilidad'>Disponibilidad: </p>" . $row["disponibilidad"] . " <br> 
+        <p class='ml-2 font-bold signatura'>Signatura topográfica: </p>" . $row["signatura"] . " <br> 
+        <p class='ml-2 font-bold portada'>Portada: </p>" . $row["portada"] . "<br>
+        <button id='editar-item' class='card-button bg-azul border border-solid rounded p-2 m-1 text-blanco cursor-pointer' onclick='openEditModal(this)'>Editar</button>
+        <button id='eliminar-item' class='card-button bg-azul border border-solid rounded p-2 m-1 text-blanco cursor-pointer'>Eliminar</button>
         </div> <hr>";
         // Puedes ajustar los nombres de las columnas según tu tabla
     }
@@ -133,6 +134,30 @@ if ($result->num_rows > 0) {
 // Cerrar conexión
 $conn->close();
 ?>
+
+<!-- Modal -->
+<div id="editModal" class="modal hidden fixed z-10 inset-0 overflow-y-auto">
+<div class="flex items-center justify-center min-h-screen">
+    <div class="modal-content bg-white rounded-lg shadow-lg p-6 relative w-full max-w-md">
+    <span class="close absolute top-2 right-2 text-gray-500 cursor-pointer">&times;</span>
+    <h2 class="text-2xl mb-4">Editar Ítem</h2>
+    <form id="editForm">
+        <input type="hidden" id="editItemId">
+        <div class="mb-4">
+        <label for="editTitulo" class="block text-gray-700">Título</label>
+        <input type="text" id="editTitulo" name="titulo" class="w-full border rounded px-2 py-1">
+        </div>
+        <div class="mb-4">
+        <label for="editAutor" class="block text-gray-700">Autor</label>
+        <input type="text" id="editAutor" name="autor" class="w-full border rounded px-2 py-1">
+        </div>
+        <!-- Añade aquí otros campos del formulario que necesitas editar -->
+        <button type="submit" class="bg-azul text-white px-4 py-2 rounded">Guardar</button>
+    </form>
+    </div>
+</div>
+</div>
+
     </section>
 
     <!-- Footer: legales, etc. -->
@@ -145,8 +170,8 @@ $conn->close();
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <script src="./js/eliminar_item.js"></script>
+    <!-- <script src="./js/editItem.js"></script> -->
+    <!-- <script src="./js/eliminar_item.js"></script> -->
 </body>
 
 </html>
