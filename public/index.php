@@ -62,7 +62,7 @@
             Novedades
         </h1>
 <!-- Probando el flex responsive: flex flex-col text-center md:flex-row  -->
-<div class="flex flex-col text-center md:flex-row">
+<div class="flex flex-row flex-wrap justify-center">
     <?php
     header('Content-Type: text/html; charset=utf-8');
        include 'conexion.php'; // Incluye el archivo de conexión
@@ -92,7 +92,7 @@ if (!$result) {
         while ($row = $result->fetch_assoc()) {
     ?>
             <div class="card flex flex-col items-center justify-between m-4 p-4 border rounded bg-gris">
-                <div>
+                <div class="flex flex-col items-center m-2">
                     <h2 class="card-title m-2 text-2xl text-wrap">
                         <?php echo $row["titulo"]; ?>
                     </h2>
@@ -102,6 +102,7 @@ if (!$result) {
                     <h4 class="card-title text-wrap">
                         <?php echo $row["nombre_autor"]; ?>
                     </h4>
+                    <img src="./img/portadas/Portada.jpg" alt="Imagen de la Card" class="h-52 m-4 rounded">
                 </div>
                 <!-- Se saca la imagen por el momento hasta que se pueda trabajar mejor con las portadas -->
                 <!-- <img src="./img/portadas/portada.png" alt="Imagen de la Card" class="card-image m-4 w-1 h-1 rounded shadow-xl"> -->
@@ -109,15 +110,15 @@ if (!$result) {
                     Ver más...</button>
 
                 <!-- Modal -->
-                <div id="modal" class="modal hidden fixed z-20 left-0 top-0 w-full h-full overflow-auto bg-blanco">
+                <div id="modal" class="modal hidden fixed z-20 left-0 top-0 w-full h-full overflow-auto bg-blanco text-left">
                     <div class="modal-content relative inset-y-1/4 p-5 border bg-gris">
                         <span class="close float-right text-xl font-bold hover:cursor-pointer" onclick="closeModal()">&times;</span>
-                        <div class="flex justify-between">
+                        <div class="flex justify-between items-center">
                             <div class="w-full">
-                                <h2 class="card-title m-2 text-2xl"><?php echo $row["titulo"], ["nombre_autor"]; ?></h2>
-                                <h4 class="modal-otra-info text-wrap"><?php echo $row["otra_info"]; ?></h4>
-                                <hr>
-                                <ol>
+                                <h2 class="card-title m-2 text-2xl text-center"><?php echo $row["titulo"], ["nombre_autor"]; ?></h2>
+                                <h4 class="modal-otra-info text-wrap text-center"><?php echo $row["otra_info"]; ?></h4>
+                                <hr class="m-2">
+                                <ol class="m-2">
                                     <li class="modal-edicion"><?php echo $row["edicion"]; ?></li>
                                     <li class="modal-material"><?php echo $row["material"]; ?></li>
                                     <li class="modal-publi"><?php echo $row["publi_distribucion"]; ?></li>
@@ -127,12 +128,12 @@ if (!$result) {
                                     <li class="modal-normalizado"><?php echo $row["numero_normalizado"]; ?></li>
                                 </ol>
                                 <hr class="m-2">
-                                <ol>
+                                <ol class="m-2">
                                     <li class="modal-dispo"><?php echo $row["disponibilidad"]; ?></li>
                                     <li class="modal-signatura"><?php echo $row["signatura"]; ?></li>
                                 </ol>
                             </div>
-                            <img src="./img/portadas/portada.png" alt="Imagen de la Card" class="modal-image h-52 m-4 rounded">
+                            <img src="./img/portadas/Portada.jpg" alt="Imagen de la Card" class="modal-image h-52 m-4 rounded">
                         </div>
                         <hr class="m-2">
                         <div class="flex">
