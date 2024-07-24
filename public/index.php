@@ -59,8 +59,8 @@
     <!-- Section 2: contiene las novedades con cardbox -->
     <section class="flex flex-col items-center border border-solid border-b-4 border-l-0 border-r-0 border-b-azul">
         <h1 class="font-bold m-4">
-    Novedades
-</h1>
+            Novedades
+        </h1>
 <!-- Probando el flex responsive: flex flex-col text-center md:flex-row  -->
 <div class="flex flex-col text-center md:flex-row">
     <?php
@@ -105,7 +105,8 @@ if (!$result) {
                 </div>
                 <!-- Se saca la imagen por el momento hasta que se pueda trabajar mejor con las portadas -->
                 <!-- <img src="./img/portadas/portada.png" alt="Imagen de la Card" class="card-image m-4 w-1 h-1 rounded shadow-xl"> -->
-                <button class="card-button bg-azul border border-solid rounded p-2 m-1 text-blanco cursor-pointer" onclick="openModal('<?php echo $row["titulo"]; ?>', '<?php echo $row["otra_info"]; ?>')">Ver más...</button>
+                <button class="card-button bg-azul border border-solid rounded p-2 m-1 text-blanco cursor-pointer" onclick="openModal('<?php echo $row["titulo"]; ?>', '<?php echo $row["otra_info"]; ?>', '<?php echo $row["edicion"]; ?>', '<?php echo $row["material"]; ?>', '<?php echo $row["publi_distribucion"]; ?>', '<?php echo $row["descripcion_fisica"]; ?>', '<?php echo $row["serie"]; ?>', '<?php echo $row["notas"]; ?>', '<?php echo $row["numero_normalizado"]; ?>', '<?php echo $row["disponibilidad"]; ?>', '<?php echo $row["signatura"]; ?>')">
+                    Ver más...</button>
 
                 <!-- Modal -->
                 <div id="modal" class="modal hidden fixed z-20 left-0 top-0 w-full h-full overflow-auto bg-blanco">
@@ -117,18 +118,18 @@ if (!$result) {
                                 <h4 class="modal-otra-info text-wrap"><?php echo $row["otra_info"]; ?></h4>
                                 <hr>
                                 <ol>
-                                    <li>Edición: <?php echo $row["edicion"]; ?></li>
-                                    <li>Material: <?php echo $row["material"]; ?></li>
-                                    <li>Publicación: <?php echo $row["publi_distribucion"]; ?></li>
-                                    <li>Descripción física: <?php echo $row["descripcion_fisica"]; ?></li>
-                                    <li>Serie: <?php echo $row["serie"]; ?></li>
-                                    <li>Notas: <?php echo $row["notas"]; ?></li>
-                                    <li>Número normalizado: <?php echo $row["numero_normalizado"]; ?></li>
+                                    <li class="modal-edicion"><?php echo $row["edicion"]; ?></li>
+                                    <li class="modal-material"><?php echo $row["material"]; ?></li>
+                                    <li class="modal-publi"><?php echo $row["publi_distribucion"]; ?></li>
+                                    <li class="modal-descripcion"><?php echo $row["descripcion_fisica"]; ?></li>
+                                    <li class="modal-serie"><?php echo $row["serie"]; ?></li>
+                                    <li class="modal-notas"><?php echo $row["notas"]; ?></li>
+                                    <li class="modal-normalizado"><?php echo $row["numero_normalizado"]; ?></li>
                                 </ol>
                                 <hr class="m-2">
                                 <ol>
-                                    <li>Disponibilidad: <?php echo $row["disponibilidad"]; ?></li>
-                                    <li>Signatura topográfica: <?php echo $row["signatura"]; ?></li>
+                                    <li class="modal-dispo"><?php echo $row["disponibilidad"]; ?></li>
+                                    <li class="modal-signatura"><?php echo $row["signatura"]; ?></li>
                                 </ol>
                             </div>
                             <img src="./img/portadas/portada.png" alt="Imagen de la Card" class="modal-image h-52 m-4 rounded">
