@@ -54,6 +54,7 @@
         <div class="btn-group" role="group">
             <button class="bg-blanco shadow-xl border rounded p-1 m-1"><a href="?order=id_item" >Id</a></button>
             <button class="bg-blanco shadow-xl border rounded p-1 m-1"><a href="?order=titulo">Titulo</a></button>
+            <button class="bg-blanco shadow-xl border rounded p-1 m-1"><a href="?order=forma_autorizada">Autor</a></button>
             <button class="bg-blanco shadow-xl border rounded p-1 m-1"><a href="?order=disponibilidad">Disponibilidad</a></button>
         </div>
     </section>
@@ -90,7 +91,7 @@
 
     // Obtener el criterio de ordenación de la URL, por defecto 'id_items'
     $order = isset($_GET['order']) ? $_GET['order'] : 'id_items';
-    $valid_orders = ['id_items', 'titulo', 'disponibilidad'];
+    $valid_orders = ['id_items', 'titulo', 'forma_autorizada', 'disponibilidad'];
     if (!in_array($order, $valid_orders)) {
     $order = 'id_items';
 }
