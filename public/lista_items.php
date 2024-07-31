@@ -51,9 +51,11 @@
     <!-- Section 1: contiene la caja de búsqueda -->
     <section class="flex flex-wrap items-center justify-center text-gray-900 bg-gris border-t-0 border-l-0 border-r-0 border-b-4 border-b-rojo">
         <p>Ordenar por:</p>
-        <button class="bg-blanco shadow-xl border rounded p-1 m-1">Id</button>
-        <button class="bg-blanco shadow-xl border rounded p-1 m-1">Titulo</button>
-        <button class="bg-blanco shadow-xl border rounded p-1 m-1">Disponibilidad</button>
+        <div class="btn-group" role="group">
+            <button class="bg-blanco shadow-xl border rounded p-1 m-1"><a href="?order=id_item" >Id</a></button>
+            <button class="bg-blanco shadow-xl border rounded p-1 m-1"><a href="?order=titulo">Titulo</a></button>
+            <button class="bg-blanco shadow-xl border rounded p-1 m-1"><a href="?order=disponibilidad">Disponibilidad</a></button>
+        </div>
     </section>
 
     <section class="m-2 p-2">
@@ -86,6 +88,13 @@
     if ($page < 1) $page = 1;
     $offset = ($page - 1) * $per_page;
 
+    // Obtener el criterio de ordenación de la URL, por defecto 'id_items'
+    $order = isset($_GET['order']) ? $_GET['order'] : 'id_items';
+    $valid_orders = ['id_items', 'titulo', 'disponibilidad'];
+    if (!in_array($order, $valid_orders)) {
+    $order = 'id_items';
+}
+
     // Consulta SQL para obtener la cantidad de items
     $sqlItems = "SELECT COUNT(*) AS cantidad_items FROM items";
     $resultItems = $conn->query($sqlItems);
@@ -105,7 +114,7 @@
     $sql = "SELECT items.*, autoridades.forma_autorizada AS nombre_autor 
             FROM items 
             JOIN autoridades ON items.id_autor = autoridades.id_autor 
-            ORDER BY items.id_items ASC 
+            ORDER BY $order ASC 
             LIMIT $offset, $per_page";
 
     $result = $conn->query($sql);
@@ -150,17 +159,17 @@
         $end = min($total_pages, $start + $range - 1);
 
         if ($start > 1): ?>
-            <a href="?page=1" class="p-2 bg-blue-500 text-white rounded">Primero</a>
-            <a href="?page=<?php echo $page - 1; ?>" class="p-2 bg-blue-500 text-white rounded">Anterior</a>
+            <a href="?page=1&order=<?php echo $order; ?>" class="p-2 bg-blue-500 text-white rounded">Primero</a>
+            <a href="?page=<?php echo $page - 1; ?>&order=<?php echo $order; ?>" class="p-2 bg-blue-500 text-white rounded">Anterior</a>
         <?php endif; 
 
         for ($i = $start; $i <= $end; $i++): ?>
-            <a href="?page=<?php echo $i; ?>" class="p-2 <?php if ($i == $page) echo 'bg-blue-700 text-white'; else echo 'bg-blue-500 text-white'; ?> rounded"><?php echo $i; ?></a>
+            <a href="?page=<?php echo $i; ?>&order=<?php echo $order; ?>" class="p-2 <?php if ($i == $page) echo 'bg-blue-700 text-white'; else echo 'bg-blue-500 text-white'; ?> rounded"><?php echo $i; ?></a>
         <?php endfor; 
 
         if ($end < $total_pages): ?>
-            <a href="?page=<?php echo $page + 1; ?>" class="p-2 bg-blue-500 text-white rounded">Siguiente</a>
-            <a href="?page=<?php echo $total_pages; ?>" class="p-2 bg-blue-500 text-white rounded">Último</a>
+            <a href="?page=<?php echo $page + 1; ?>&order=<?php echo $order; ?>" class="p-2 bg-blue-500 text-white rounded">Siguiente</a>
+            <a href="?page=<?php echo $total_pages; ?>&order=<?php echo $order; ?>" class="p-2 bg-blue-500 text-white rounded">Último</a>
         <?php endif; ?>
     </div>
 
