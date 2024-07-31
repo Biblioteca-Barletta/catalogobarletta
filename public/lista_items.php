@@ -52,7 +52,7 @@
     <section class="flex flex-wrap items-center justify-center text-gray-900 bg-gris border-t-0 border-l-0 border-r-0 border-b-4 border-b-rojo">
         <p>Ordenar por:</p>
         <div class="btn-group" role="group">
-            <button class="bg-blanco shadow-xl border rounded p-1 m-1"><a href="?order=id_item" >Id</a></button>
+            <button class="bg-blanco shadow-xl border rounded p-1 m-1"><a href="?order=id_item">Id</a></button>
             <button class="bg-blanco shadow-xl border rounded p-1 m-1"><a href="?order=titulo">Titulo</a></button>
             <button class="bg-blanco shadow-xl border rounded p-1 m-1"><a href="?order=forma_autorizada">Autor</a></button>
             <button class="bg-blanco shadow-xl border rounded p-1 m-1"><a href="?order=disponibilidad">Disponibilidad</a></button>
