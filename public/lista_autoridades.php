@@ -93,8 +93,13 @@ echo "
     </div>
     ";
 
-// Consulta SQL para seleccionar todas las filas de la tabla 'items'
-$sql = "SELECT * FROM autoridades  ORDER BY `autoridades`.`forma_autorizada` ASC";
+
+// // Consulta SQL para seleccionar todas las filas de la tabla 'items'
+// $sql = "SELECT * FROM autoridades  ORDER BY `autoridades`.`forma_autorizada` ASC";
+// $result = $conn->query($sql);
+
+// Consulta SQL para seleccionar todas las filas de la tabla 'autoridades' y los títulos de libros de la tabla 'items'
+$sql = "SELECT autoridades.id_autor, autoridades.forma_autorizada, GROUP_CONCAT(items.titulo SEPARATOR ', ') AS titulos FROM autoridades LEFT JOIN items ON autoridades.id_autor = items.id_autor GROUP BY autoridades.id_autor ORDER BY autoridades.forma_autorizada ASC";
 $result = $conn->query($sql);
 
 // Verificar si hay filas devueltas
@@ -105,11 +110,12 @@ if ($result->num_rows > 0) {
         <div class='bg-gris m-1 p-1 rounded'>
         <p class='ml-2'>ID:" . $row["id_autor"] . "</p>
         <p class='ml-2'>Autor: " . $row["forma_autorizada"] . "</p><br>
+        <p class='ml-2'>Títulos: " . ($row["titulos"] ? $row["titulos"] : "No tiene títulos asociados") . "</p><br>
         <button id='eliminar-item'>Eliminar</button>
         </div> <hr>";
     }
 } else {
-    echo "No se encontraron resultados en la tabla 'items'.";
+    echo "No se encontraron resultados en la tabla 'autoridades'.";
 }
 
 // Cerrar conexión
