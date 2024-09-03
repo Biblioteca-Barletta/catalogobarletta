@@ -1,4 +1,7 @@
 function openModal(titulo, otraInfo, edicion, material, publicacion, descripcion, serie, notas, normalizado, dispo, signatura) {
+
+    console.log(titulo, otraInfo, edicion, material, publicacion, descripcion, serie, notas, normalizado, dispo, signatura)
+    
     // Obtén el modal
     let modal = document.getElementById("modal");
     

@@ -99,19 +99,81 @@ echo "
 // $result = $conn->query($sql);
 
 // Consulta SQL para seleccionar todas las filas de la tabla 'autoridades' y los títulos de libros de la tabla 'items'
-$sql = "SELECT autoridades.id_autor, autoridades.forma_autorizada, GROUP_CONCAT(items.titulo SEPARATOR ', ') AS titulos FROM autoridades LEFT JOIN items ON autoridades.id_autor = items.id_autor GROUP BY autoridades.id_autor ORDER BY autoridades.forma_autorizada ASC";
+$sql = "SELECT autoridades.id_autor, autoridades.forma_autorizada, autoridades.cutter, items.titulo, items.otra_info, items.edicion, items.material, items.publi_distribucion, items.descripcion_fisica, items.serie, items.notas, items.numero_normalizado, items.disponibilidad, items.signatura 
+        FROM autoridades 
+        LEFT JOIN items ON autoridades.id_autor = items.id_autor 
+        ORDER BY autoridades.forma_autorizada ASC";
 $result = $conn->query($sql);
 
 // Verificar si hay filas devueltas
 if ($result->num_rows > 0) {
-    // Imprimir los datos de cada fila
+    // Inicializar un array para agrupar los datos por autor
+    $autores = [];
+
+    // Procesar los resultados
     while ($row = $result->fetch_assoc()) {
+        $id_autor = $row["id_autor"];
+
+        // Agrupar los datos de cada autor
+        if (!isset($autores[$id_autor])) {
+            $autores[$id_autor] = [
+                'forma_autorizada' => $row["forma_autorizada"],
+                'cutter' => $row["cutter"],
+                'titulos' => []
+            ];
+        }
+
+        // Añadir el título al autor si existe
+        if ($row["titulo"]) {
+            $autores[$id_autor]['titulos'][] = [
+                'titulo' => $row["titulo"],
+                'otra_info' => $row["otra_info"],
+                'edicion' => $row["edicion"],
+                'material' => $row["material"],
+                'publicacion' => $row["publi_distribucion"],
+                'descripcion' => $row["descripcion_fisica"],
+                'serie' => $row["serie"],
+                'notas' => $row["notas"],
+                'normalizado' => $row["numero_normalizado"],
+                'disponibilidad' => $row["disponibilidad"],
+                'signatura' => $row["signatura"]
+            ];
+        }
+    }
+
+    // Imprimir los datos de cada autor
+    foreach ($autores as $id_autor => $autor) {
         echo "
         <div class='bg-gris m-1 p-1 rounded'>
-        <p class='ml-2'>ID:" . $row["id_autor"] . "</p>
-        <p class='ml-2'>Autor: " . $row["forma_autorizada"] . "</p><br>
-        <p class='ml-2'>Títulos: " . ($row["titulos"] ? $row["titulos"] : "No tiene títulos asociados") . "</p><br>
-        <button id='eliminar-item'>Eliminar</button>
+        <p class='ml-2'>ID: " . $id_autor . "</p>
+        <p class='ml-2'>Autor: " . $autor["forma_autorizada"] . "</p><br>
+        <p class='ml-2'>Cutter: " . $autor["cutter"] . "</p><br>";
+
+        // Mostrar la lista de títulos
+        if (!empty($autor['titulos'])) {
+            echo "<p class='ml-2'>Títulos:</p><ul>";
+            foreach ($autor['titulos'] as $tituloData) {
+                echo "<li> - <a href='#' class='modal-trigger text-blue-600 hover:underline' 
+                onclick=\"openModal(
+                    '" . addslashes($tituloData['titulo']) . "', 
+                    '" . addslashes($tituloData['otra_info']) . "', 
+                    '" . addslashes($tituloData['edicion']) . "', 
+                    '" . addslashes($tituloData['material']) . "', 
+                    '" . addslashes($tituloData['publicacion']) . "', 
+                    '" . addslashes($tituloData['descripcion']) . "', 
+                    '" . addslashes($tituloData['serie']) . "', 
+                    '" . addslashes($tituloData['notas']) . "', 
+                    '" . addslashes($tituloData['normalizado']) . "', 
+                    '" . addslashes($tituloData['disponibilidad']) . "', 
+                    '" . addslashes($tituloData['signatura']) . "'
+                )\">" . $tituloData['titulo'] . "</a></li>";
+            }
+            echo "</ul>";
+        } else {
+            echo "<p class='ml-2'>Títulos: No tiene títulos asociados</p>";
+        }
+
+        echo "<br><button id='eliminar-item'>Eliminar</button>
         </div> <hr>";
     }
 } else {
@@ -121,6 +183,41 @@ if ($result->num_rows > 0) {
 // Cerrar conexión
 $conn->close();
 ?>
+
+<!-- Modal -->
+<div id="modal" class="modal hidden fixed z-20 left-0 top-0 w-full h-full overflow-auto bg-blanco text-left">
+    <div class="modal-content relative inset-y-1/4 p-5 border bg-gris">
+        <span class="close float-right text-xl font-bold hover:cursor-pointer" onclick="closeModal()">&times;</span>
+        <div class="flex justify-between items-center">
+            <div class="w-full">
+                <h2 class="card-title m-2 text-2xl text-center"></h2>
+                <h4 class="modal-otra-info text-wrap text-center"></h4>
+                <hr class="m-2">
+                <ol class="m-2">
+                    <li class="modal-edicion"></li>
+                    <li class="modal-material"></li>
+                    <li class="modal-publi"></li>
+                    <li class="modal-descripcion"></li>
+                    <li class="modal-serie"></li>
+                    <li class="modal-notas"></li>
+                    <li class="modal-normalizado"></li>
+                </ol>
+                <hr class="m-2">
+                <ol class="m-2">
+                    <li class="modal-dispo"></li>
+                    <li class="modal-signatura"></li>
+                </ol>
+            </div>
+            <img src="./img/portadas/Portada.jpg" alt="Imagen de la Card" class="modal-image h-52 m-4 rounded">
+        </div>
+        <hr class="m-2">
+        <div class="flex">
+            <button class="modal-button block w-full py-2.5 px-5 bg-azul text-blanco rounded cursor-pointer text-base m-2">Reservar</button>
+            <button class="modal-button block w-full py-2.5 px-5 bg-rojo text-blanco rounded cursor-pointer text-base m-2">Devolver</button>
+        </div>
+    </div>
+</div>
+
     </section>
 
     <!-- Footer: legales, etc. -->
@@ -133,7 +230,7 @@ $conn->close();
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <script src="./js/script.js"></script>
     <script src="./js/eliminar_item.js"></script>
 </body>
 
