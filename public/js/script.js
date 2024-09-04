@@ -61,3 +61,25 @@ function closeModal() {
     // Oculta el modal
     modal.classList.add("hidden");
 }
+
+// Filtrar autores por letra
+$(document).ready(function() {
+    $('.filter-letter').on('click', function() {
+        var letra = $(this).data('letter');
+
+        // Realizar una solicitud AJAX para filtrar los autores según la letra seleccionada
+        $.ajax({
+            url: 'lista_autoridades.php',
+            type: 'GET',
+            data: { letra: letra },
+            success: function(response) {
+                console.log(response)
+                // Actualizar la sección con los autores filtrados
+                $('section.m-2.p-2').html($(response).find('section.m-2.p-2').html());
+            },
+            error: function(xhr, status, error) {
+                console.error('Error al filtrar autores:', status, error);
+            }
+        });
+    });
+});

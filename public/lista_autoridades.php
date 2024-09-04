@@ -56,6 +56,19 @@
         <button class="bg-blanco shadow-xl border rounded p-1 m-1">Autor</button>
         <button class="bg-blanco shadow-xl border rounded p-1 m-1">Items</button>
     </section>
+    <!-- Índice alfabético -->
+    <section class="flex flex-wrap items-center justify-center text-gray-900 bg-gris border-t-0 border-l-0 border-r-0 border-b-4 border-b-rojo p-2">
+        <p>Filtrar por letra:</p>
+        <div class="alphabet-filter">
+            <?php
+            foreach (range('A', 'Z') as $letra) {
+                echo "<a href='lista_autoridades.php?letra=$letra' class='bg-blanco shadow-xl border rounded p-1 m-1 filter-letter'>$letra</a>";
+            }
+            ?>
+        </div>
+    </section>
+
+
     <section class="m-2 p-2">
 
     <?php
@@ -94,15 +107,21 @@ echo "
     ";
 
 
-// // Consulta SQL para seleccionar todas las filas de la tabla 'items'
-// $sql = "SELECT * FROM autoridades  ORDER BY `autoridades`.`forma_autorizada` ASC";
-// $result = $conn->query($sql);
+// Obtener la letra seleccionada desde los parámetros de la URL o asignar una letra predeterminada
+$letra = isset($_GET['letra']) ? $_GET['letra'] : 'A';
 
-// Consulta SQL para seleccionar todas las filas de la tabla 'autoridades' y los títulos de libros de la tabla 'items'
+// Consulta SQL para seleccionar las filas donde la forma autorizada comienza con la letra seleccionada
 $sql = "SELECT autoridades.id_autor, autoridades.forma_autorizada, autoridades.cutter, items.titulo, items.otra_info, items.edicion, items.material, items.publi_distribucion, items.descripcion_fisica, items.serie, items.notas, items.numero_normalizado, items.disponibilidad, items.signatura 
         FROM autoridades 
         LEFT JOIN items ON autoridades.id_autor = items.id_autor 
+        WHERE autoridades.forma_autorizada LIKE '$letra%'
         ORDER BY autoridades.forma_autorizada ASC";
+
+// Consulta SQL para seleccionar todas las filas de la tabla 'autoridades' y los títulos de libros de la tabla 'items'
+// $sql = "SELECT autoridades.id_autor, autoridades.forma_autorizada, autoridades.cutter, items.titulo, items.otra_info, items.edicion, items.material, items.publi_distribucion, items.descripcion_fisica, items.serie, items.notas, items.numero_normalizado, items.disponibilidad, items.signatura 
+//         FROM autoridades 
+//         LEFT JOIN items ON autoridades.id_autor = items.id_autor 
+//         ORDER BY autoridades.forma_autorizada ASC";
 $result = $conn->query($sql);
 
 // Verificar si hay filas devueltas
